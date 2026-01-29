@@ -1,0 +1,25 @@
+<?php
+
+use Drupal\Core\Mail\MailInterface;
+
+/**
+ * Implements hook_mail().
+ */
+function event_registration_mail($key, &$message, $params) {
+
+  // Set sender email from site configuration.
+  $message['from'] = \Drupal::config('system.site')->get('mail');
+
+  switch ($key) {
+
+    case 'user_confirmation':
+      $message['subject'] = t('Event Registration Confirmation');
+      $message['body'][] = $params['message'];
+      break;
+
+    case 'admin_notification':
+      $message['subject'] = t('New Event Registration');
+      $message['body'][] = $params['message'];
+      break;
+  }
+}
