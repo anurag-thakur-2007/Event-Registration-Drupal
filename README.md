@@ -57,8 +57,6 @@ event-registration-drupal/
             └── RegistrationExportController.php
 ```
 
-## ⚙️ Installation Steps
-Now this is a normal heading again.
 
 
 ---
