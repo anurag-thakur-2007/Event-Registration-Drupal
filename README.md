@@ -35,6 +35,7 @@ event-registration-drupal/
     ├── event_registration.permissions.yml
     ├── event_registration.routing.yml
     ├── event_registration.links.menu.yml
+    │
     └── src/
         ├── Form/
         │   ├── EventConfigForm.php
@@ -46,6 +47,7 @@ event-registration-drupal/
             ├── EventListController.php
             ├── RegistrationListController.php
             └── RegistrationExportController.php
+
 
 ⚙️ Installation Steps
 
