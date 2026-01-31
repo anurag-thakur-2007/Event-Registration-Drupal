@@ -1,17 +1,29 @@
 # Event Registration Module (Drupal 10)
 
+<<<<<<< HEAD
 A custom Drupal 10 module that allows administrators to configure events and users to register for them via a dynamic registration form.
+=======
+A custom Drupal 10 module that allows administrators to configure events and users to register for them via a dynamic registration form.  
+>>>>>>> d2be512 (updated readme)
 The module stores registrations in custom database tables and sends email notifications using Drupal Mail API.
 
 ---
 
 ## 🚀 Features Overview
 
+<<<<<<< HEAD
 - Custom Event Configuration page for admins
 - Dynamic Event Registration Form with AJAX
 - Strong validation (duplicate prevention, input validation)
 - Custom database tables (no nodes, no contrib modules)
 - Email notifications using Drupal Mail API + hook_mail()
+=======
+- Custom **Event Configuration** page for admins
+- Dynamic **Event Registration Form** with AJAX
+- Strong validation (duplicate prevention, input validation)
+- Custom database tables (no nodes, no contrib modules)
+- Email notifications using **Drupal Mail API + hook_mail()**
+>>>>>>> d2be512 (updated readme)
 - Admin listing of registrations with filters
 - CSV export of registrations
 - Custom permissions for admin access
@@ -20,6 +32,7 @@ The module stores registrations in custom database tables and sends email notifi
 
 ## 🛠️ Technical Stack
 
+<<<<<<< HEAD
 - Drupal Version: 10.x
 - PHP Version: 8.x
 - Database: MySQL
@@ -28,6 +41,17 @@ The module stores registrations in custom database tables and sends email notifi
 - Drupal Coding Standards followed
 
 ---
+=======
+- **Drupal Version:** 10.x  
+- **PHP Version:** 8.x  
+- **Database:** MySQL  
+- **No contributed modules used**
+- **PSR-4 compliant**
+- **Drupal Coding Standards followed**
+
+---
+
+>>>>>>> d2be512 (updated readme)
 ## 📁 Module Structure
 
 ```text
@@ -55,6 +79,7 @@ event-registration-drupal/
             ├── EventListController.php
             ├── RegistrationListController.php
             └── RegistrationExportController.php
+<<<<<<< HEAD
 ```
 
 
@@ -110,11 +135,84 @@ Admins can configure events with:
 - Event Date
 - Registration Start Date
 - Registration End Date
+=======
+
+
+⚙️ Installation Steps
+
+
+Clone the repository:
+
+git clone <repository-url>
+
+
+Place the module inside:
+
+web/modules/custom/event_registration
+
+
+Import database tables:
+
+Open phpMyAdmin
+
+Import event_registration_tables.sql
+
+Enable the module:
+
+drush en event_registration
+
+
+Clear cache:
+
+drush cr
+
+🔗 Important URLs
+
+
+Admin Pages
+
+Event Configuration (Add Events)
+/admin/config/event-registration
+
+Event List (Admin View)
+/admin/events
+
+Email Configuration
+/admin/config/event-registration/email
+
+Registration List (Admin)
+/admin/events/registrations
+
+Export Registrations (CSV)
+/admin/events/registrations/export
+
+User Page
+
+Event Registration Form
+/events/register
+
+
+🧩 Event Configuration (Admin)
+
+
+Admins can configure events with:
+
+Event Name
+
+Category (Online Workshop, Hackathon, Conference, One-day Workshop)
+
+Event Date
+
+Registration Start Date
+
+Registration End Date
+>>>>>>> d2be512 (updated readme)
 
 Events are stored in a custom table:
 
 event_registration_event
 
+<<<<<<< HEAD
 ---
 
 # 📝 Event Registration Form (User)
@@ -139,11 +237,45 @@ Available only between registration start and end dates.
 ---
 
 # ✅ Validation Rules
+=======
+
+#📝 Event Registration Form (User)
+
+
+Available only between registration start and end dates.
+
+Fields:
+
+Full Name
+
+Email Address
+
+College Name
+
+Department
+
+Event Category (AJAX)
+
+Event Date (AJAX)
+
+Event Name (AJAX)
+
+AJAX Behavior:
+
+Event Dates load based on selected category
+
+Event Names load based on selected category + date
+
+
+✅ Validation Rules
+
+>>>>>>> d2be512 (updated readme)
 
 Prevents duplicate registration using:
 
 Email + Event
 
+<<<<<<< HEAD
 ### Validations
 
 - Proper email format
@@ -195,31 +327,114 @@ Admin can configure:
 
 - Admin email address
 - Enable/disable admin notifications
+=======
+
+Validates:
+
+Email format
+
+No special characters in text fields
+
+Displays user-friendly error messages
+
+
+🗄️ Database Tables
+1️⃣ event_registration_event
+
+Stores event configuration:
+
+id
+
+event_name
+
+category
+
+event_date
+
+reg_start
+
+reg_end
+
+created
+
+2️⃣ event_registration_signup
+
+Stores user registrations:
+
+id
+
+event_id (foreign key)
+
+full_name
+
+email
+
+college
+
+department
+
+created
+
+
+📧 Email Notifications
+
+
+Email functionality is implemented using Drupal Mail API and verified via hook_mail().
+
+Emails Sent:
+
+User confirmation email
+
+Admin notification email (optional)
+
+Configuration:
+
+Admin can configure:
+
+Admin email address
+
+Enable/disable admin notifications
+>>>>>>> d2be512 (updated readme)
 
 Config stored using Drupal Config API:
 
 event_registration.settings
 
+<<<<<<< HEAD
 ### hook_mail() Implementation
 
+=======
+hook_mail Implementation:
+>>>>>>> d2be512 (updated readme)
 function event_registration_mail($key, &$message, $params) {
   $message['from'] = \Drupal::config('system.site')->get('mail');
   $message['subject'] = $params['subject'];
   $message['body'][] = $params['message'];
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> d2be512 (updated readme)
 ✔ Email logic is verified
 ✔ No hard-coded values
 ✔ Fully configurable from admin UI
 
+<<<<<<< HEAD
 ---
 
 # 📊 Admin Registration Listing
+=======
+
+📊 Admin Registration Listing
+
+>>>>>>> d2be512 (updated readme)
 
 Accessible only to users with permission:
 
 View event registrations
 
+<<<<<<< HEAD
 ### Features
 
 - Filter by Event Date
@@ -242,6 +457,33 @@ Additional features:
 ---
 
 # 🔐 Permissions
+=======
+Features:
+
+Filter by Event Date
+
+Filter by Event Name
+
+Displays:
+
+Name
+
+Email
+
+Event Date
+
+College
+
+Department
+
+Submission Date
+
+Shows total participant count
+
+Export filtered results as CSV
+
+🔐 Permissions
+>>>>>>> d2be512 (updated readme)
 
 Custom permission defined:
 
@@ -251,6 +493,7 @@ Assign via:
 
 Admin → People → Permissions
 
+<<<<<<< HEAD
 ---
 
 # 🧪 Screenshots 
@@ -263,3 +506,6 @@ Admin → People → Permissions
 
 
 
+=======
+🧪 Screenshots (Optional)
+>>>>>>> d2be512 (updated readme)
